@@ -9,18 +9,20 @@ import {
   PORT,
   SERVER_JAR_FILE_NAME
 } from "../config/common";
+import OutPutService from "../services/Output";
 
 const fs = require("fs");
 const download = require("download");
 const AdmZip = require("adm-zip");
 const { exec } = require("child_process");
 const portscanner = require("portscanner");
-const kill = require("kill-port");
+const { kill } = require("cross-port-killer");
 const path = require("path");
 
 export class BaseRunner implements IRunner {
   public createProject(): void {
     if (!vscode.workspace.rootPath) {
+      OutPutService.printLine("Open Workspace folder to start your project.");
       vscode.window.showInformationMessage("Open Workspace folder to start your project.");
       return;
     }
@@ -42,14 +44,14 @@ export class BaseRunner implements IRunner {
                 }
               );
             });
-          vscode.window.showInformationMessage("Create project successfully.");
+          OutPutService.printLine("Create project successfully!");
+          vscode.window.showInformationMessage("Create project successfully!");
         });
       } catch (e) {
         console.log(e);
       }
       return;
     }
-    vscode.window.showInformationMessage("Clean your Workspace folder before creating a new project.");
   }
   public createPage(): void {
     vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(CREATE_PAGE_URL));
@@ -61,6 +63,7 @@ export class BaseRunner implements IRunner {
     portscanner.checkPortStatus(PORT, "127.0.0.1", (error: any, status: any) => {
       const serverFilePath = path.join(vscode.workspace.rootPath, SERVER_JAR_FILE_NAME);
       if(status === 'open') {
+        OutPutService.printLine("Port 4444 is aldready in use.");
         vscode.window.showInformationMessage("Port 4444 is aldready in use.");
         return;
       }
@@ -89,15 +92,18 @@ export class BaseRunner implements IRunner {
         }
         console.log(stdout);
     });
+    OutPutService.printLine("Start server successfully!");
     vscode.window.showInformationMessage("Start server successfully!");
   }
 
   public stopServer(): void {
     portscanner.checkPortStatus(PORT, "127.0.0.1", (error: any, status: any) => {
       if(status === 'open') {
-        kill(PORT, "tcp")
-          .then(() => vscode.window.showInformationMessage("Stop server successfully!"))
-          .catch((error:any) => console.log(error));
+        kill(PORT)
+          .then(() => {
+            OutPutService.printLine("Stop server successfully!");
+            vscode.window.showInformationMessage("Stop server successfully!");
+          }).catch((error: any) => console.log(error));
       }
     });
   }

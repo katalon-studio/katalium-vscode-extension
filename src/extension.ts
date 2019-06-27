@@ -4,6 +4,7 @@ import AuthenticatorService from "./services/Authenticator";
 import MenuItem from "./views/kataMenu/MenuItem";
 import { BaseRunner } from './runners/BaseRunner';
 import SigninPanel from "./views/signinPanel/SigninPanel";
+import OutPutService from './services/Output';
 
 
 let statusBarItem : vscode.StatusBarItem;
@@ -40,6 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
   }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.startServer", () => {
     if (!AuthenticatorService.isAuthenticated()) {
+      OutPutService.printLine("Please activate to enable this feature");
       vscode.window.showInformationMessage("Please activate to enable this feature");
       return;
     }
@@ -50,6 +52,7 @@ export function activate(context: vscode.ExtensionContext) {
   }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.stopServer", () => {
     if (!AuthenticatorService.isAuthenticated()) {
+      OutPutService.printLine("Please activate to enable this feature");
       vscode.window.showInformationMessage("Please activate to enable this feature");
       return;
     }
