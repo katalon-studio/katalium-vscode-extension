@@ -90,7 +90,8 @@ export class BaseRunner implements IRunner {
           console.log(err);
           return;
         }
-        console.log(stdout);
+        OutPutService.printLine(stdout);
+        OutPutService.printLine(stderr);
     });
     OutPutService.printLine("Start server successfully!");
     vscode.window.showInformationMessage("Start server successfully!");

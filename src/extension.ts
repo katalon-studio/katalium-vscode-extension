@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
     runner.createPage();
   }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.createTestCase", (node: MenuItem) => {
-    runner.createPage();
+    runner.createTestCase();
   }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.signin", (node: MenuItem) => {
     SigninPanel.createOrShow(context, kataMenuViewProvider);
