@@ -11,7 +11,7 @@ import {
 } from "../config/common";
 import OutPutService from "../services/Output";
 
-const fs = require("fs");
+const fs = require("fs-extra");
 const download = require("download");
 const AdmZip = require("adm-zip");
 const { exec } = require("child_process");
@@ -36,7 +36,7 @@ export class BaseRunner implements IRunner {
           zip.getEntries()
             .filter((zipEntry: any) => !zipEntry.isDirectory)
             .forEach((zipEntry: any) => {
-              fs.writeFile(path.join(vscode.workspace.rootPath, zipEntry.name),zipEntry.getData(),
+              fs.writeFile(path.join(vscode.workspace.rootPath, zipEntry.entryName),zipEntry.getData(),
                 (err: any) => {
                   if (err) {
                     console.log(err);
