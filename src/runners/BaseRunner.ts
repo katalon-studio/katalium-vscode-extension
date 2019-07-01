@@ -14,7 +14,7 @@ import OutPutService from "../services/Output";
 const fs = require("fs-extra");
 const download = require("download");
 const AdmZip = require("adm-zip");
-const { exec } = require("child_process");
+const { spawn } = require("child_process");
 const portscanner = require("portscanner");
 const { kill } = require("cross-port-killer");
 const homeDir = require("homedir")();
@@ -87,15 +87,17 @@ export class BaseRunner implements IRunner {
   }
 
   private executeStartServerCommand():void {
-    exec(`java -jar ${serverFilePath}`,
-    { maxBuffer : 500 * 1024 },
-      (err: any, stdout: any, stderr: any) => {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        OutPutService.printLine(stdout);
-        OutPutService.printLine(stderr);
+    var child = spawn('java', ['-jar', serverFilePath, '-port', '4444'], {stdio: ['ignore', null, null]});
+    child.stdout.on("data", (data: any) => {
+      OutPutService.printLine(data);
+    });
+
+    child.stderr.on("data", (data: any) => {
+      OutPutService.printLine(data);
+    });
+
+    child.on("close", (code: any) => {
+      console.log(`child process exited with code ${code}`);
     });
     OutPutService.printLine("Start server successfully!");
     vscode.window.showInformationMessage("Start server successfully!");
