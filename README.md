@@ -6,4 +6,5 @@ For software testers and automation engineers who want to write Selenium tests, 
 
 The framework is designed to be lightweight. Standard functions of TestNG, Selenium, and other popular open-source frameworks are leveraged to minimize the learning curve and transition efforts.
 
+Please visit our [documentation page](https://docs.katalon.com/katalium-framework/docs/katalium-framework-get-started-vscode.html) for detailed instructions.
 Katalium is open-sourced at https://github.com/katalon-studio/katalium.

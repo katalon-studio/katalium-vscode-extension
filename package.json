@@ -1,6 +1,6 @@
 {
   "name": "katalium",
-  "displayName": "Katalium",
+  "displayName": "Katalium Framework - TestNG and Selenium made easy",
   "publisher": "katalon-llc",
   "description": "",
   "version": "1.0.0",
@@ -23,7 +23,7 @@
     "url": "https://github.com/katalon-studio/katalium-vscode-extension"
   },
   "homepage": "https://github.com/katalon-studio/katalium-vscode-extension",
-  "preview": true,
+  "preview": false,
   "public": true,
   "icon": "media/katalium-logo.png",
   "activationEvents": [

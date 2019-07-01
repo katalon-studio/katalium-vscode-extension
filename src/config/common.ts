@@ -1,4 +1,4 @@
-const SAMPLE_PROJECT_URL = "https://github.com/katalon-studio/katalon-studio/blob/master/katalium-sample.zip";
+const SAMPLE_PROJECT_URL = "https://github.com/katalon-studio/katalon-studio/raw/master/katalium-sample.zip";
 const REPO_URL = "https://github.com/katalon-studio/katalium-vscode-extension";
 const CREATE_TEST_CASE_URL = "https://docs.katalon.com/katalium-framework/docs/katalium-framework-create-test-case.html";
 const CREATE_PAGE_URL = "https://docs.katalon.com/katalium-framework/docs/katalium-framework-page-object-model.html";
