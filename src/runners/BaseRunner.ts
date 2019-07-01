@@ -55,6 +55,8 @@ export class BaseRunner implements IRunner {
       }
       return;
     }
+    vscode.window.showInformationMessage("Clean your Workspace folder before creating a new project.");
+    OutPutService.printLine("Clean your Workspace folder before creating a new project.");
   }
   public createPage(): void {
     vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(CREATE_PAGE_URL));
