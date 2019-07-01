@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/katalon-studio/katalium-vscode-extension",
   "preview": true,
+  "public": true,
   "icon": "media/katalium-logo.png",
   "activationEvents": [
     "onView:kataMenu",
