@@ -17,7 +17,10 @@ const AdmZip = require("adm-zip");
 const { exec } = require("child_process");
 const portscanner = require("portscanner");
 const { kill } = require("cross-port-killer");
+const homeDir = require("homedir")();
 const path = require("path");
+
+const serverFilePath = path.join(homeDir, ".katalon", SERVER_JAR_FILE_NAME);
 
 export class BaseRunner implements IRunner {
   public createProject(): void {
@@ -61,7 +64,6 @@ export class BaseRunner implements IRunner {
   }
   public startServer(): void {
     portscanner.checkPortStatus(PORT, "127.0.0.1", (error: any, status: any) => {
-      const serverFilePath = path.join(vscode.workspace.rootPath, SERVER_JAR_FILE_NAME);
       if(status === 'open') {
         OutPutService.printLine("Port 4444 is aldready in use.");
         vscode.window.showInformationMessage("Port 4444 is aldready in use.");
@@ -83,7 +85,7 @@ export class BaseRunner implements IRunner {
   }
 
   private executeStartServerCommand():void {
-    exec(`java -jar ${path.join(vscode.workspace.rootPath, SERVER_JAR_FILE_NAME)}`,
+    exec(`java -jar ${serverFilePath}`,
     { maxBuffer : 500 * 1024 },
       (err: any, stdout: any, stderr: any) => {
         if (err) {
