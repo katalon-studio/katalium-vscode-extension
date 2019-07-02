@@ -2,7 +2,7 @@
   "name": "katalium",
   "displayName": "Katalium Framework - TestNG and Selenium made easy",
   "publisher": "katalon-llc",
-  "description": "",
+  "description": "A framework that provides a blueprint for test automation projects based on TestNG and Selenium",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.34.0"
@@ -14,10 +14,13 @@
   ],
   "keywords": [
     "katalon",
+    "Katalon Studio",
     "test",
     "selenium",
     "testing",
-    "automation"
+    "automation",
+    "TestNG",
+    "Katalium"
   ],
   "repository": {
     "url": "https://github.com/katalon-studio/katalium-vscode-extension"
