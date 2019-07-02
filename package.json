@@ -14,10 +14,13 @@
   ],
   "keywords": [
     "katalon",
+    "Katalon Studio",
     "test",
     "selenium",
     "testing",
-    "automation"
+    "automation",
+    "TestNG",
+    "Katalium"
   ],
   "repository": {
     "url": "https://github.com/katalon-studio/katalium-vscode-extension"
