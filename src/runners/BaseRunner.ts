@@ -39,7 +39,7 @@ export class BaseRunner implements IRunner {
           zip.getEntries()
             .filter((zipEntry: any) => !zipEntry.isDirectory)
             .forEach((zipEntry: any) => {
-              fs.writeFile(path.join(vscode.workspace.rootPath, zipEntry.entryName),zipEntry.getData(),
+              fs.outputFile(path.join(vscode.workspace.rootPath, zipEntry.entryName),zipEntry.getData(),
                 (err: any) => {
                   if (err) {
                     console.log(err);
@@ -77,7 +77,7 @@ export class BaseRunner implements IRunner {
       }
 
       download(KATA_SERVER_STANALONE_JAR_URL).then((file: any) => {
-        fs.writeFileSync(
+        fs.outputFileSync(
           serverFilePath,
           file
         );
