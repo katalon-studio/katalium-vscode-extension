@@ -3,12 +3,12 @@
 
 Katalium is a framework that provides a blueprint for test automation projects based on TestNG and Selenium.
 
-For software testers and automation engineers who want to write Selenium tests, Katalon Studio is the best option at this moment, with a lot of built-in features to make designing test cases and applying CI/CD effortlessly. However, for those who still needs to work with TestNG and Selenium, Katalium Framework will give you a head start.
+When it comes to Selenium-based testing, Katalon Studio is the software of choice for testers and automation engineers to date. It offers a host of built-in features that simplify building test cases for users. However, for users who still need to work with TestNG and Selenium, Katalium Framework is a great head start.
 
-The framework is designed to be lightweight. Standard functions of TestNG, Selenium, and other popular open-source frameworks are leveraged to minimize the learning curve and transition efforts.
+Tailored to be a lightweight and accessible platform for all users, Katalium retains the standard functions of TestNG and Selenium. By leveraging the common open-source frameworks functionalities, the learning curve and transition efforts are minimized, allowing users to execute their projects better and faster.
 
 Please visit our [documentation page](https://docs.katalon.com/katalium-framework/docs/katalium-framework-get-started-vscode.html) for detailed instructions.
 
-Katalium is open-sourced at https://github.com/katalon-studio/katalium.
+Open-source Katalium is available at https://github.com/katalon-studio/katalium.
 
 The sample project is available at https://github.com/katalon-studio/katalium-sample.
