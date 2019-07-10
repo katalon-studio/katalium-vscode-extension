@@ -1,3 +1,5 @@
+## 1.0.4 (2019/07/10)
+* Update display name
 ## 1.0.3 (2019/07/04)
 * Update description
 ## 1.0.2 (2019/07/02)
