@@ -2,14 +2,14 @@ import {IRunner} from './IRunner';
 import * as vscode from "vscode";
 import {
   SAMPLE_PROJECT_URL,
-  KATA_SERVER_STANALONE_JAR_URL,
+  KATA_SERVER_STANDALONE_JAR_URL,
   CREATE_PAGE_URL,
   CREATE_TEST_CASE_URL,
   REPO_URL,
   PORT,
   SERVER_JAR_FILE_NAME
 } from "../config/common";
-import OutPutService from "../services/Output";
+import OutputService from "../services/Output";
 
 const fs = require("fs-extra");
 const download = require("download");
@@ -25,7 +25,7 @@ const serverFilePath = path.join(homeDir, ".katalon", SERVER_JAR_FILE_NAME);
 export class BaseRunner implements IRunner {
   public createProject(): void {
     if (!vscode.workspace.rootPath) {
-      OutPutService.printLine("Open Workspace folder to start your project.");
+      OutputService.printLine("Open Workspace folder to start your project.");
       vscode.window.showInformationMessage("Open Workspace folder to start your project.");
       return;
     }
@@ -47,7 +47,7 @@ export class BaseRunner implements IRunner {
                 }
               );
             });
-          OutPutService.printLine("Create project successfully!");
+          OutputService.printLine("Create project successfully!");
           vscode.window.showInformationMessage("Create project successfully!");
         });
       } catch (e) {
@@ -56,7 +56,7 @@ export class BaseRunner implements IRunner {
       return;
     }
     vscode.window.showInformationMessage("Clean your Workspace folder before creating a new project.");
-    OutPutService.printLine("Clean your Workspace folder before creating a new project.");
+    OutputService.printLine("Clean your Workspace folder before creating a new project.");
   }
   public createPage(): void {
     vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(CREATE_PAGE_URL));
@@ -65,18 +65,19 @@ export class BaseRunner implements IRunner {
     vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(CREATE_TEST_CASE_URL));
   }
   public startServer(): void {
+    OutputService.show();
     portscanner.checkPortStatus(PORT, "127.0.0.1", (error: any, status: any) => {
       if(status === 'open') {
-        OutPutService.printLine("Port 4444 is aldready in use.");
-        vscode.window.showInformationMessage("Port 4444 is aldready in use.");
+        OutputService.printLine("Port 4444 is already in use.");
+        vscode.window.showInformationMessage("Port 4444 is already in use.");
         return;
       }
       if (fs.existsSync(serverFilePath)) {
         this.executeStartServerCommand();
         return;
       }
-
-      download(KATA_SERVER_STANALONE_JAR_URL).then((file: any) => {
+      OutputService.printLine("Downloading Katalium server...");
+      download(KATA_SERVER_STANDALONE_JAR_URL).then((file: any) => {
         fs.outputFileSync(
           serverFilePath,
           file
@@ -89,26 +90,27 @@ export class BaseRunner implements IRunner {
   private executeStartServerCommand():void {
     var child = spawn('java', ['-jar', serverFilePath, '-port', '4444'], {stdio: ['ignore', null, null]});
     child.stdout.on("data", (data: any) => {
-      OutPutService.printLine(data);
+      OutputService.printLine(data);
     });
 
     child.stderr.on("data", (data: any) => {
-      OutPutService.printLine(data);
+      OutputService.printLine(data);
     });
 
     child.on("close", (code: any) => {
       console.log(`child process exited with code ${code}`);
     });
-    OutPutService.printLine("Start server successfully!");
+    OutputService.printLine("Start server successfully!");
     vscode.window.showInformationMessage("Start server successfully!");
   }
 
   public stopServer(): void {
+    OutputService.show();
     portscanner.checkPortStatus(PORT, "127.0.0.1", (error: any, status: any) => {
       if(status === 'open') {
         kill(PORT)
           .then(() => {
-            OutPutService.printLine("Stop server successfully!");
+            OutputService.printLine("Stop server successfully!");
             vscode.window.showInformationMessage("Stop server successfully!");
           }).catch((error: any) => console.log(error));
       }

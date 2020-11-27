@@ -51,38 +51,6 @@
           "name": ""
         }
       ]
-    },
-    "commands": [
-      {
-        "command": "kata.startServer",
-        "title": "Start Server",
-        "icon": {
-          "light": "resources/light/start-server.png",
-          "dark": "resources/dark/start-server.png"
-        }
-      },
-      {
-        "command": "kata.stopServer",
-        "title": "Stop Server",
-        "icon": {
-          "light": "resources/light/stop-server.png",
-          "dark": "resources/dark/stop-server.png"
-        }
-      }
-    ],
-    "menus": {
-      "view/title": [
-        {
-          "command": "kata.stopServer",
-          "when": "view == kataMenu",
-          "group": "navigation"
-        },
-        {
-          "command": "kata.startServer",
-          "when": "view == kataMenu",
-          "group": "navigation"
-        }
-      ]
     }
   },
   "scripts": {

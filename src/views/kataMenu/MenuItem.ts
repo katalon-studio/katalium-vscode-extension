@@ -11,14 +11,6 @@ export default class MenuItem extends vscode.TreeItem {
     super(label, collapsibleState);
   }
 
-  get tooltip(): string {
-    return '';
-  }
-
-  get description(): string {
-    return '';
-  }
-
   iconPath = {
     light: path.join(
       __filename,

@@ -1,11 +1,7 @@
 import * as vscode from "vscode";
 import KataMenuViewProvider from "./views/kataMenu/KataMenu";
-import AuthenticatorService from "./services/Authenticator";
 import MenuItem from "./views/kataMenu/MenuItem";
 import { BaseRunner } from './runners/BaseRunner';
-import SigninPanel from "./views/signinPanel/SigninPanel";
-import OutPutService from './services/Output';
-
 
 let statusBarItem : vscode.StatusBarItem;
 
@@ -33,37 +29,21 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.commands.registerCommand("kata.createTestCase", (node: MenuItem) => {
     runner.createTestCase();
   }));
-  context.subscriptions.push(vscode.commands.registerCommand("kata.signin", (node: MenuItem) => {
-    SigninPanel.createOrShow(context, kataMenuViewProvider);
-  }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.signout", (node: MenuItem) => {
 
   }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.startServer", () => {
-    if (!AuthenticatorService.isAuthenticated()) {
-      OutPutService.printLine("Please activate to enable this feature");
-      vscode.window.showInformationMessage("Please activate to enable this feature");
-      return;
-    }
     runner.startServer();
   }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.openRepo", () => {
     runner.openRepo();
   }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.stopServer", () => {
-    if (!AuthenticatorService.isAuthenticated()) {
-      OutPutService.printLine("Please activate to enable this feature");
-      vscode.window.showInformationMessage("Please activate to enable this feature");
-      return;
-    }
     runner.stopServer();
   }));
 }
 
 export function deactivate(context: vscode.ExtensionContext) {
-  if (SigninPanel.currentPanel) {
-    SigninPanel.currentPanel.dispose();
-  }
   if(statusBarItem) {
     statusBarItem.dispose();
   }
