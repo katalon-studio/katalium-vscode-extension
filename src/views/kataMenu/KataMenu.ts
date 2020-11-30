@@ -13,7 +13,7 @@ export default class KataMenuViewProvider
         command: "kata.startServer",
         title: "Start Katalium server",
       },
-      "start-server.png"
+      "debug-start.svg"
     ),
     new MenuItem(
       "Stop Katalium server",
@@ -22,7 +22,7 @@ export default class KataMenuViewProvider
         command: "kata.stopServer",
         title: "Stop Katalium server",
       },
-      "stop-server.png"
+      "debug-stop.svg"
     ),
     new MenuItem(
       "Create Project",
@@ -31,16 +31,7 @@ export default class KataMenuViewProvider
         command: "kata.createProject",
         title: "Create Project",
       },
-      "create-project.png"
-    ),
-    new MenuItem(
-      "Create Page",
-      vscode.TreeItemCollapsibleState.None,
-      {
-        command: "kata.createPage",
-        title: "Create Page"
-      },
-      "create-page.png"
+      "file-symlink-file.svg"
     ),
     new MenuItem(
       "Create Test Case",
@@ -49,16 +40,34 @@ export default class KataMenuViewProvider
         command: "kata.createTestCase",
         title: "Create Test Case"
       },
-      "create-test-case.png"
+      "file-symlink-file.svg"
     ),
     new MenuItem(
-      "Github",
+      "Create Page",
+      vscode.TreeItemCollapsibleState.None,
+      {
+        command: "kata.createPage",
+        title: "Create Page"
+      },
+      "file-symlink-file.svg"
+    ),
+    new MenuItem(
+      "Record & Generate Code",
+      vscode.TreeItemCollapsibleState.None,
+      {
+        command: "kata.recordGenerateCode",
+        title: "Record & Generate Code"
+      },
+      "file-symlink-file.svg"
+    ),
+    new MenuItem(
+      "Feedback",
       vscode.TreeItemCollapsibleState.None,
       {
         command: "kata.openRepo",
-        title: "Open Github"
+        title: "Feedback"
       },
-      "open-github.png"
+      "github-inverted.svg"
     )
   ];
 

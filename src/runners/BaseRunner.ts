@@ -5,6 +5,7 @@ import {
   KATA_SERVER_STANDALONE_JAR_URL,
   CREATE_PAGE_URL,
   CREATE_TEST_CASE_URL,
+  RECORD_GENERATE_CODE_URL,
   REPO_URL,
   PORT,
   SERVER_JAR_FILE_NAME
@@ -63,6 +64,9 @@ export class BaseRunner implements IRunner {
   }
   public createTestCase(): void {
     vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(CREATE_TEST_CASE_URL));
+  }
+  public recordGenerateCode(): void {
+    vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(RECORD_GENERATE_CODE_URL));
   }
   public startServer(): void {
     OutputService.show();
