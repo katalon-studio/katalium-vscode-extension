@@ -3,7 +3,7 @@
   "displayName": "Katalium - Selenium and TestNG made easy",
   "publisher": "katalon-llc",
   "description": "A test automation framework based on TestNG and Selenium that provides a blueprint for test automation projects.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "engines": {
     "vscode": "^1.34.0"
   },
@@ -49,38 +49,6 @@
         {
           "id": "kataMenu",
           "name": ""
-        }
-      ]
-    },
-    "commands": [
-      {
-        "command": "kata.startServer",
-        "title": "Start Server",
-        "icon": {
-          "light": "resources/light/start-server.png",
-          "dark": "resources/dark/start-server.png"
-        }
-      },
-      {
-        "command": "kata.stopServer",
-        "title": "Stop Server",
-        "icon": {
-          "light": "resources/light/stop-server.png",
-          "dark": "resources/dark/stop-server.png"
-        }
-      }
-    ],
-    "menus": {
-      "view/title": [
-        {
-          "command": "kata.stopServer",
-          "when": "view == kataMenu",
-          "group": "navigation"
-        },
-        {
-          "command": "kata.startServer",
-          "when": "view == kataMenu",
-          "group": "navigation"
         }
       ]
     }
