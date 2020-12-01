@@ -6,6 +6,7 @@ import {
   CREATE_PAGE_URL,
   CREATE_TEST_CASE_URL,
   RECORD_GENERATE_CODE_URL,
+  KATALON_TESTOPS_URL,
   REPO_URL,
   PORT,
   SERVER_JAR_FILE_NAME
@@ -67,6 +68,9 @@ export class BaseRunner implements IRunner {
   }
   public recordGenerateCode(): void {
     vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(RECORD_GENERATE_CODE_URL));
+  }
+  public visitKatalonTestOps(): void {
+    vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(KATALON_TESTOPS_URL));
   }
   public startServer(): void {
     OutputService.show();

@@ -30,7 +30,10 @@ export function activate(context: vscode.ExtensionContext) {
   }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.recordGenerateCode", () => {
     runner.recordGenerateCode();
-  }));  
+  }));
+  context.subscriptions.push(vscode.commands.registerCommand("kata.visitKatalonTestOps", () => {
+    runner.visitKatalonTestOps();
+  }));
   context.subscriptions.push(vscode.commands.registerCommand("kata.openRepo", () => {
     runner.openRepo();
   }));
