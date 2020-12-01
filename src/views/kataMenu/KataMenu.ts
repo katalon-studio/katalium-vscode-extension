@@ -25,29 +25,29 @@ export default class KataMenuViewProvider
       "debug-stop.svg"
     ),
     new MenuItem(
-      "Create Project",
+      "Create a new Project",
       vscode.TreeItemCollapsibleState.None,
       {
         command: "kata.createProject",
-        title: "Create Project",
+        title: "Create a new Project",
       },
-      "file-symlink-file.svg"
+      "add.svg"
     ),
     new MenuItem(
-      "Create Test Case",
+      "Create a new Test Case",
       vscode.TreeItemCollapsibleState.None,
       {
         command: "kata.createTestCase",
-        title: "Create Test Case"
+        title: "Create a new Test Case"
       },
       "file-symlink-file.svg"
     ),
     new MenuItem(
-      "Create Page",
+      "Create a new Page",
       vscode.TreeItemCollapsibleState.None,
       {
         command: "kata.createPage",
-        title: "Create Page"
+        title: "Create a new Page"
       },
       "file-symlink-file.svg"
     ),
@@ -58,7 +58,16 @@ export default class KataMenuViewProvider
         command: "kata.recordGenerateCode",
         title: "Record & Generate Code"
       },
-      "file-symlink-file.svg"
+      "chrome-filled.svg"
+    ),
+    new MenuItem(
+      "Visit Katalon TestOps Dashboard",
+      vscode.TreeItemCollapsibleState.None,
+      {
+        command: "kata.visitKatalonTestOps",
+        title: "Visit Katalon TestOps Dashboard"
+      },
+      "project.svg"
     ),
     new MenuItem(
       "Feedback",
