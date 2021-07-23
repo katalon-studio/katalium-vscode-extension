@@ -71,7 +71,7 @@
   },
   "dependencies": {
     "adm-zip": "^0.4.13",
-    "cross-port-killer": "^1.1.1",
+    "cross-port-killer": "^1.3.0",
     "download": "^7.1.0",
     "fs-extra": "^8.1.0",
     "homedir": "^0.6.0",
